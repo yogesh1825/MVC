@@ -9,6 +9,11 @@ app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
+// ejs
+app.set('view engine', 'ejs');
+app.set("views",__dirname + "/view")
+
+
 app.use("/", Route);
 
 app.listen(PORT, () => {

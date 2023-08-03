@@ -1,9 +1,11 @@
-const {Router} = require("express")
-const { home, login } = require("../controller/user.controller")
+const { Router } = require("express");
+const { home, login, getlogin } = require("../controller/user.controller");
+const Auth = require("../middleware/userCheck");
 
-const Route = Router()
+const Route = Router();
 
-Route.get('/',home)
-Route.post("/login",login)
+Route.get("/", home);
+Route.post("/login", Auth, login);
+Route.get("/login", getlogin);
 
-module.exports = Route 
+module.exports = Route;
